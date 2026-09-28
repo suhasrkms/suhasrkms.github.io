@@ -20,11 +20,11 @@
     <!-- End Google Tag Manager -->
     <!-- Required meta tags -->
     <meta charset="utf-8" />
-    <title>Suhas R — Personal Portfolio</title>
-    <meta name="title" content="Suhas R — Personal Portfolio" />
+    <title>Lara Fire — Laravel 13 + Firebase starter kit | Suhas R</title>
+    <meta name="title" content="Lara Fire — Laravel 13 + Firebase starter kit" />
     <meta
       name="description"
-      content="Discover my portfolio and explore a collection of stunning projects. From design to development and everything in between."
+      content="Lara Fire v2: open-source Laravel 13 + Firebase starter kit with Auth, admin roles, Cloud Firestore, push notifications and a token-secured REST API."
     />
     <meta
       name="viewport"
@@ -227,18 +227,14 @@
                         <!-- title frame -->
                         <div class="art-title-frame">
                           <!-- title -->
-                          <h4>Lara Fire - A Composer Package</h4>
+                          <h4>Lara Fire v2 — Laravel 13 + Firebase</h4>
                         </div>
                         <!-- title frame end -->
                         <!-- right frame -->
                         <div class="art-right-frame">
-                          <a
-                            href="https://packagist.org/packages/suhasrkms/lara-fire"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
+                          <a href="lara-fire-docs.html" data-no-swup>
                             <div class="art-project-category project-link-page">
-                              Package Link
+                              Read the Docs
                             </div>
                           </a>
                         </div>
@@ -418,43 +414,23 @@
                         <h5 class="mb-15">Description</h5>
                         <div class="mb-15">
                           <p>
-                            <strong
-                              >Introducing a Laravel-Firebase Package | A
-                              comprehensive solution seamlessly integrating
-                              Laravel's robust framework with Firebase's
-                              powerful features.
-                            </strong>
+                            <strong>Lara Fire is an open-source starter kit that combines Laravel 13 with Firebase.</strong>
+                            It handles authentication, roles, data and notifications without a SQL database, so you can go straight to building your product.
                           </p>
-                          <p>This package provides developers with:</p>
+                          <p>Version 2 is a full rewrite. It includes:</p>
                           <ul>
-                            <li>
-                              <strong>Authentication:</strong> Effortless user
-                              sign-up and login processes, ensuring security and
-                              ease of use.
-                            </li>
-                            <li>
-                              <strong>Profile Management:</strong> Flexible
-                              tools for users to manage their profiles,
-                              fostering a personalized experience.
-                            </li>
-                            <li>
-                              <strong>Admin Dashboard:</strong> A user-friendly
-                              dashboard for administrators to monitor and manage
-                              user activity effectively.
-                            </li>
-                            <li>
-                              <strong>Forgot Password Functionality:</strong>
-                              Seamless password recovery for users, minimizing
-                              disruption to access.
-                            </li>
+                            <li><strong>Firebase Authentication:</strong> email/password, Google and GitHub sign-in, email verification and password reset, all through a real Laravel guard.</li>
+                            <li><strong>Admin panel:</strong> search and stats, grant or revoke admin through Firebase custom claims, enable/disable users, send reset links.</li>
+                            <li><strong>Cloud Firestore:</strong> a per-user Notes module over the REST API, with no gRPC needed, so it also runs on Windows.</li>
+                            <li><strong>Push notifications (FCM):</strong> users opt in per browser, and admins can broadcast or target one user.</li>
+                            <li><strong>REST API:</strong> <code>/api/v1</code> secured with Firebase ID tokens, ready for Flutter and mobile apps.</li>
+                            <li><strong>Modern UI and tooling:</strong> Bootstrap 5.3 with Vite 8, dark mode, 30 automated tests and CI on PHP 8.3 to 8.5.</li>
                           </ul>
+                          <p><strong>Install in one command:</strong></p>
+                          <pre style="background:#20202a;color:#fafafc;padding:12px 14px;border-radius:6px;overflow-x:auto;"><code>composer create-project suhasrkms/lara-fire my-app</code></pre>
                           <p>
-                            Designed as a package, it offers easy installation
-                            and integration into Laravel projects, streamlining
-                            development and enhancing functionality. Whether
-                            you're launching a new project or expanding an
-                            existing one, our Laravel-Firebase package provides
-                            a solid foundation for success.
+                            Then follow the <a href="lara-fire-docs.html#firebase-setup" class="art-color-link" data-no-swup>Firebase setup guide</a>.
+                            The full <a href="lara-fire-docs.html" class="art-color-link" data-no-swup>documentation</a> covers configuration, every feature, deployment and troubleshooting.
                           </p>
                         </div>
                       </div>
@@ -467,13 +443,17 @@
                         <h5 class="mb-15">Resource Links</h5>
                         <!-- table -->
                         <div class="art-buttons-frame">
+                          <a href="lara-fire-docs.html" data-no-swup class="art-link art-color-link">
+                            > Documentation</a>
+                        </div>
+                        <div class="art-buttons-frame pt-2">
                           <a
                             href="https://www.youtube.com/watch?v=BahOD2Hoz60&list=PLLXuDcfEpwD-2SkWBMRHDHbwdn3MA6BJZ"
                             target="_blank"
                             rel="noopener noreferrer"
                             class="art-link art-color-link"
                           >
-                            > Watch Video</a
+                            > Video Tutorials</a
                           >
                         </div>
 

@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != "dataLayer" ? "&l=" + l : "";
+      j.async = true; j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", "GTM-NGHRCTQ");
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lara Fire Docs — Laravel 13 + Firebase starter kit</title>
+  <meta name="description" content="Documentation for Lara Fire v2: install, Firebase setup, authentication, admin roles with custom claims, Cloud Firestore, push notifications (FCM), REST API, deployment and troubleshooting." />
+  <meta name="theme-color" content="#1e1e28" />
+  <link rel="shortcut icon" href="img/thumbnail.ico" type="image/x-icon" />
+  <link rel="canonical" href="https://suhasrkms.github.io/lara-fire-docs.html" />
+  <meta property="og:title" content="Lara Fire Docs" />
+  <meta property="og:description" content="Laravel 13 + Firebase starter kit: Auth, admin roles, Firestore, FCM and a token-secured API." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #1e1e28; --panel: #20202a; --card: #2b2b35; --line: #34343f;
+      --text: #d6d6db; --muted: #8c8c8e; --head: #fafafc; --accent: #ffc107;
+      --code-bg: #181820; --ok: #4caf50; --warn: #ff9800; --bad: #f44336;
+      --sidebar: 280px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 300 15px/1.75 "Poppins", system-ui, sans-serif; letter-spacing: .2px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1, h2, h3, h4 { color: var(--head); font-weight: 600; line-height: 1.3; }
+    h2 { font-size: 1.6rem; margin: 3.5rem 0 1rem; padding-top: .5rem; border-top: 1px solid var(--line); }
+    h2:first-of-type { border-top: 0; }
+    h3 { font-size: 1.15rem; margin: 2rem 0 .6rem; }
+    h4 { font-size: 1rem; margin: 1.4rem 0 .4rem; }
+    p, li { color: var(--text); }
+    strong { color: var(--head); font-weight: 500; }
+    code { font: 400 .86em "JetBrains Mono", ui-monospace, monospace; background: var(--card); color: #ffe082; padding: .12em .4em; border-radius: 4px; }
+    pre { position: relative; background: var(--code-bg); border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.1rem; overflow-x: auto; margin: 1rem 0 1.4rem; }
+    pre code { background: none; color: #e6e6ea; padding: 0; font-size: .84rem; line-height: 1.65; }
+    pre .copy { position: absolute; top: .5rem; right: .5rem; background: var(--card); color: var(--muted); border: 1px solid var(--line); border-radius: 6px; font: 500 .72rem "Poppins"; padding: .2rem .55rem; cursor: pointer; opacity: 0; transition: opacity .15s; }
+    pre:hover .copy, pre .copy:focus { opacity: 1; }
+    pre .copy.done { color: var(--ok); }
+    .c { color: #6a6a78; } .k { color: #ffc107; } .s { color: #a5d6a7; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: .9rem; display: block; overflow-x: auto; }
+    th, td { text-align: left; padding: .6rem .8rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { color: var(--head); font-weight: 500; background: var(--panel); white-space: nowrap; }
+    td code { white-space: nowrap; }
+    .callout { border-left: 3px solid var(--accent); background: var(--panel); padding: .8rem 1rem; border-radius: 0 8px 8px 0; margin: 1.2rem 0; }
+    .callout.warn { border-color: var(--warn); } .callout.bad { border-color: var(--bad); } .callout.ok { border-color: var(--ok); }
+    .callout p { margin: .2rem 0; }
+    .callout-title { font-weight: 600; color: var(--head); display: block; margin-bottom: .2rem; }
+
+    /* layout */
+    .topbar { position: sticky; top: 0; z-index: 20; height: 64px; display: flex; align-items: center; gap: 1rem; padding: 0 1.25rem; background: rgba(30,30,40,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+    .brand { display: flex; align-items: center; gap: .55rem; color: var(--head); font-weight: 600; font-size: 1.05rem; }
+    .brand:hover { text-decoration: none; }
+    .brand .ver { font: 500 .7rem "Poppins"; color: #1e1e28; background: var(--accent); padding: .1rem .45rem; border-radius: 99px; }
+    .topbar nav { margin-left: auto; display: flex; gap: 1.1rem; font-size: .88rem; }
+    .topbar nav a { color: var(--muted); } .topbar nav a:hover { color: var(--head); text-decoration: none; }
+    .menu-btn { display: none; background: none; border: 1px solid var(--line); color: var(--head); border-radius: 8px; padding: .3rem .6rem; font-size: 1rem; cursor: pointer; }
+    .wrap { display: flex; max-width: 1280px; margin: 0 auto; }
+    aside { position: sticky; top: 64px; align-self: flex-start; width: var(--sidebar); height: calc(100vh - 64px); overflow-y: auto; padding: 1.5rem 1rem 3rem 1.25rem; border-right: 1px solid var(--line); flex-shrink: 0; }
+    .search { width: 100%; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; color: var(--head); padding: .5rem .7rem; font: 400 .85rem "Poppins"; margin-bottom: 1rem; }
+    .search:focus { outline: none; border-color: var(--accent); }
+    aside .group { color: var(--muted); font-size: .7rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin: 1.3rem 0 .4rem .5rem; }
+    aside a { display: block; color: var(--text); font-size: .88rem; padding: .28rem .6rem; border-radius: 6px; }
+    aside a:hover { background: var(--panel); text-decoration: none; }
+    aside a.active { color: var(--accent); background: rgba(255,193,7,.08); }
+    main { flex: 1; min-width: 0; padding: 2rem 2.5rem 6rem; max-width: 900px; }
+    .hero { padding: 1.5rem 0 1rem; }
+    .hero h1 { font-size: 2.4rem; margin: 0 0 .5rem; }
+    .hero h1 span { color: var(--accent); }
+    .hero p.lead { font-size: 1.1rem; color: var(--muted); max-width: 640px; }
+    .badges { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0 1.5rem; }
+    .badge { font-size: .75rem; padding: .2rem .65rem; border-radius: 99px; background: var(--card); color: var(--text); border: 1px solid var(--line); }
+    .btns { display: flex; flex-wrap: wrap; gap: .6rem; }
+    .btn { display: inline-block; padding: .6rem 1.1rem; border-radius: 8px; font-weight: 500; font-size: .9rem; border: 1px solid var(--line); color: var(--head); }
+    .btn.primary { background: var(--accent); color: #1e1e28; border-color: var(--accent); }
+    .btn:hover { text-decoration: none; filter: brightness(1.08); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1.1rem 1.2rem; }
+    .card h4 { margin: .2rem 0 .3rem; }
+    .card p { margin: 0; font-size: .88rem; color: var(--muted); }
+    .card .ico { font-size: 1.4rem; }
+    .steps { counter-reset: step; list-style: none; padding: 0; }
+    .steps > li { counter-increment: step; position: relative; padding-left: 2.6rem; margin-bottom: 1.4rem; }
+    .steps > li::before { content: counter(step); position: absolute; left: 0; top: .1rem; width: 1.8rem; height: 1.8rem; border-radius: 50%; background: var(--accent); color: #1e1e28; font-weight: 600; font-size: .85rem; display: grid; place-items: center; }
+    .flow { font: 400 .82rem "JetBrains Mono", monospace; background: var(--code-bg); border: 1px dashed var(--line); border-radius: 10px; padding: 1rem; white-space: pre; overflow-x: auto; color: #cfcfd6; }
+    footer { border-top: 1px solid var(--line); margin-top: 4rem; padding-top: 1.5rem; color: var(--muted); font-size: .85rem; }
+    .hide { display: none !important; }
+    .anchor { opacity: 0; margin-left: .35rem; font-weight: 400; color: var(--muted); }
+    h2:hover .anchor, h3:hover .anchor { opacity: 1; }
+
+    @media (max-width: 960px) {
+      .menu-btn { display: block; }
+      .topbar nav { display: none; }
+      aside { position: fixed; top: 64px; left: 0; z-index: 15; background: var(--bg); transform: translateX(-100%); transition: transform .2s; width: 290px; box-shadow: 8px 0 24px rgba(0,0,0,.4); }
+      body.nav-open aside { transform: none; }
+      main { padding: 1.5rem 1.1rem 5rem; }
+      .hero h1 { font-size: 1.9rem; }
+    }
+  </style>
+</head>
+<body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGHRCTQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <header class="topbar">
+    <button class="menu-btn" aria-label="Open menu" onclick="document.body.classList.toggle('nav-open')">☰</button>
+    <a class="brand" href="#top">🔥 Lara Fire <span class="ver">v2</span></a>
+    <nav>
+      <a href="lara_fire.html">Project</a>
+      <a href="https://github.com/suhasrkms/Lara-Fire" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://packagist.org/packages/suhasrkms/lara-fire" target="_blank" rel="noopener">Packagist</a>
+      <a href="https://www.youtube.com/@sevenstac" target="_blank" rel="noopener">YouTube</a>
+      <a href="index.html">Suhas R</a>
+    </nav>
+  </header>
+
+  <div class="wrap">
+    <aside id="toc">
+      <input class="search" id="search" type="search" placeholder="Search docs…" aria-label="Search docs" />
+      <div class="group">Getting started</div>
+      <a href="#introduction">Introduction</a>
+      <a href="#requirements">Requirements</a>
+      <a href="#installation">Installation</a>
+      <a href="#firebase-setup">Firebase setup</a>
+      <a href="#configuration">Configuration (.env)</a>
+      <a href="#running">Running the app</a>
+      <div class="group">Features</div>
+      <a href="#authentication">Authentication</a>
+      <a href="#social-login">Google &amp; GitHub login</a>
+      <a href="#admin">Admin panel &amp; roles</a>
+      <a href="#firestore">Cloud Firestore</a>
+      <a href="#push">Push notifications</a>
+      <a href="#api">REST API</a>
+      <a href="#commands">Artisan commands</a>
+      <div class="group">Guides</div>
+      <a href="#architecture">How it works</a>
+      <a href="#customizing">Customizing</a>
+      <a href="#testing">Testing</a>
+      <a href="#deployment">Deployment</a>
+      <a href="#security">Security</a>
+      <a href="#troubleshooting">Troubleshooting</a>
+      <a href="#upgrading">Upgrading from v1</a>
+      <a href="#faq">FAQ</a>
+      <a href="#support">Support</a>
+    </aside>
+
+    <main id="top">
+      <section class="hero" data-section>
+        <h1>Laravel 13 on <span>Firebase</span></h1>
+        <p class="lead">Lara Fire is an open-source starter kit that combines Laravel with Firebase Authentication, custom-claim admin roles, Cloud Firestore, push notifications and a REST API that accepts Firebase ID tokens. It needs no SQL database.</p>
+        <div class="badges">
+          <span class="badge">Laravel 13</span><span class="badge">PHP 8.3+</span><span class="badge">kreait/laravel-firebase 7</span>
+          <span class="badge">Firebase JS SDK 12</span><span class="badge">Bootstrap 5.3 + Vite 8</span><span class="badge">MIT</span>
+        </div>
+        <div class="btns">
+          <a class="btn primary" href="#installation">Get started →</a>
+          <a class="btn" href="https://github.com/suhasrkms/Lara-Fire" target="_blank" rel="noopener">★ Star on GitHub</a>
+          <a class="btn" href="https://www.youtube.com/@sevenstac" target="_blank" rel="noopener">▶ Video tutorials</a>
+        </div>
+      </section>
+
+      <!-- ============ INTRODUCTION ============ -->
+      <section data-section>
+        <h2 id="introduction">Introduction<a class="anchor" href="#introduction">#</a></h2>
+        <p>Firebase handles identity, data and messaging, and Laravel handles routing, views, validation and your business logic. Lara Fire wires the two together, so you can start building features instead of glue code.</p>
+        <div class="grid">
+          <div class="card"><div class="ico">🔐</div><h4>Firebase Auth</h4><p>Email/password, Google and GitHub, email verification, password reset. Everything goes through a real Laravel guard.</p></div>
+          <div class="card"><div class="ico">🛡️</div><h4>Admin panel</h4><p>Search and stats. Grant or revoke admin through custom claims, enable or disable users, send reset links.</p></div>
+          <div class="card"><div class="ico">🗂️</div><h4>Cloud Firestore</h4><p>Per-user Notes CRUD over the Firestore REST API. There's no gRPC, so it also works on Windows.</p></div>
+          <div class="card"><div class="ico">🔔</div><h4>Push (FCM)</h4><p>Users opt in per browser. Admins can broadcast or target one user, and no token table is needed.</p></div>
+          <div class="card"><div class="ico">🔌</div><h4>REST API</h4><p><code>/api/v1</code> authenticated with <code>Authorization: Bearer &lt;ID token&gt;</code>, ready for mobile apps.</p></div>
+          <div class="card"><div class="ico">🧪</div><h4>Tested</h4><p>30 tests with Firebase mocked. CI runs on PHP 8.3, 8.4 and 8.5.</p></div>
+        </div>
+      </section>
+
+      <!-- ============ REQUIREMENTS ============ -->
+      <section data-section>
+        <h2 id="requirements">Requirements<a class="anchor" href="#requirements">#</a></h2>
+        <table>
+          <tr><th>Tool</th><th>Version</th><th>Check</th></tr>
+          <tr><td>PHP</td><td>8.3, 8.4 or 8.5</td><td><code>php -v</code></td></tr>
+          <tr><td>PHP extensions</td><td><code>openssl</code>, <code>curl</code>, <code>mbstring</code>, <code>fileinfo</code></td><td><code>php -m</code></td></tr>
+          <tr><td>Composer</td><td>2.x</td><td><code>composer -V</code></td></tr>
+          <tr><td>Node.js</td><td>20.19+ or 22.12+</td><td><code>node -v</code></td></tr>
+          <tr><td>Firebase project</td><td>Spark (free) plan is enough</td><td><a href="https://console.firebase.google.com" target="_blank" rel="noopener">console.firebase.google.com</a></td></tr>
+        </table>
+        <div class="callout"><span class="callout-title">No database required</span><p>Sessions and cache use files by default and the queue is <code>sync</code>, so you don't need MySQL or SQLite.</p></div>
+      </section>
+
+      <!-- ============ INSTALLATION ============ -->
+      <section data-section>
+        <h2 id="installation">Installation<a class="anchor" href="#installation">#</a></h2>
+        <h3>With Composer (recommended)</h3>
+<pre><code>composer create-project suhasrkms/lara-fire my-app
+cd my-app
+npm install
+npm run build</code></pre>
+        <p><code>create-project</code> copies <code>.env.example</code> to <code>.env</code>, generates <code>APP_KEY</code> and runs <code>php artisan larafire:about</code>, which lists what's still missing.</p>
+        <h3>From GitHub</h3>
+<pre><code>git clone https://github.com/suhasrkms/Lara-Fire.git my-app
+cd my-app
+composer install
+copy .env.example .env      <span class="c"># macOS/Linux: cp .env.example .env</span>
+php artisan key:generate
+npm install &amp;&amp; npm run build</code></pre>
+      </section>
+
+      <!-- ============ FIREBASE SETUP ============ -->
+      <section data-section>
+        <h2 id="firebase-setup">Firebase setup<a class="anchor" href="#firebase-setup">#</a></h2>
+        <ol class="steps">
+          <li><strong>Create a project.</strong> In the Firebase console, click <em>Add project</em> and give it a name. Google Analytics is optional.</li>
+          <li><strong>Enable sign-in methods.</strong> Go to Authentication → <em>Get started</em> → Sign-in method and enable <em>Email/Password</em>, plus <em>Google</em> and/or <em>GitHub</em> if you want them (see <a href="#social-login">social login</a>).</li>
+          <li><strong>Download the service account key</strong> (server side). Go to Project settings → Service accounts → <em>Generate new private key</em>. Save the file as:
+<pre><code>storage/app/firebase/service-account.json</code></pre>
+            <div class="callout bad"><span class="callout-title">Keep it secret</span><p>This key has full admin access to your project. The folder is git-ignored, so never commit it, paste it anywhere or show it in a screen recording.</p></div>
+          </li>
+          <li><strong>Register a web app</strong> (browser side). Go to Project settings → General → Your apps → <em>Web</em> (&lt;/&gt;). Copy the config values into the <code>FIREBASE_WEB_*</code> keys in <code>.env</code>. These values are public by design.</li>
+          <li><strong>Authorized domains.</strong> Under Authentication → Settings → Authorized domains, <code>localhost</code> is already listed. Add your production domain before you deploy.</li>
+          <li><strong>Optional:</strong> create a <a href="#firestore">Firestore database</a> and a <a href="#push">Web Push key</a>.</li>
+        </ol>
+      </section>
+
+      <!-- ============ CONFIGURATION ============ -->
+      <section data-section>
+        <h2 id="configuration">Configuration (.env)<a class="anchor" href="#configuration">#</a></h2>
+        <p>Every Lara Fire setting lives in <code>.env</code> and is read through <code>config/larafire.php</code> and <code>config/firebase.php</code>.</p>
+        <table>
+          <tr><th>Key</th><th>Default</th><th>What it does</th></tr>
+          <tr><td><code>FIREBASE_CREDENTIALS</code></td><td><code>storage/app/firebase/service-account.json</code></td><td>Path to the service account JSON, relative to the project or absolute. Inline JSON also works.</td></tr>
+          <tr><td><code>FIREBASE_WEB_API_KEY</code></td><td>—</td><td rowspan="6">Web app config for the JS SDK. Required for social login and push.</td></tr>
+          <tr><td><code>FIREBASE_WEB_AUTH_DOMAIN</code></td><td>—</td></tr>
+          <tr><td><code>FIREBASE_WEB_PROJECT_ID</code></td><td>—</td></tr>
+          <tr><td><code>FIREBASE_WEB_STORAGE_BUCKET</code></td><td>—</td></tr>
+          <tr><td><code>FIREBASE_WEB_MESSAGING_SENDER_ID</code></td><td>—</td></tr>
+          <tr><td><code>FIREBASE_WEB_APP_ID</code></td><td>—</td></tr>
+          <tr><td><code>FIREBASE_WEB_VAPID_KEY</code></td><td>—</td><td>Web Push certificate key pair. Enables browser notifications.</td></tr>
+          <tr><td><code>LARAFIRE_SOCIAL_PROVIDERS</code></td><td><code>google,github</code></td><td>Social buttons shown on login/register, comma-separated. Leave empty to hide them.</td></tr>
+          <tr><td><code>LARAFIRE_USER_CACHE_TTL</code></td><td><code>60</code></td><td>Seconds to cache the Firebase user record between requests.</td></tr>
+          <tr><td><code>LARAFIRE_FCM_TOPIC</code></td><td><code>larafire-all</code></td><td>Topic that every subscribed device joins.</td></tr>
+          <tr><td><code>LARAFIRE_NOTES_COLLECTION</code></td><td><code>notes</code></td><td>Firestore collection used by the Notes module.</td></tr>
+          <tr><td><code>LARAFIRE_FIRESTORE_PROJECT_ID</code></td><td>from the service account</td><td>Override when the Firestore project differs.</td></tr>
+          <tr><td><code>LARAFIRE_FIRESTORE_DATABASE</code></td><td><code>(default)</code></td><td>Named Firestore database ID.</td></tr>
+          <tr><td><code>SESSION_DRIVER</code> / <code>CACHE_STORE</code></td><td><code>file</code></td><td>Swap to <code>redis</code> in production if you run several servers.</td></tr>
+        </table>
+        <p>After changing <code>.env</code>, run <code>php artisan config:clear</code>.</p>
+      </section>
+
+      <!-- ============ RUNNING ============ -->
+      <section data-section>
+        <h2 id="running">Running the app<a class="anchor" href="#running">#</a></h2>
+<pre><code>php artisan larafire:about   <span class="c"># setup checklist</span>
+php artisan serve            <span class="c"># http://localhost:8000</span>
+<span class="c"># or everything at once (server + logs + Vite hot reload):</span>
+composer dev</code></pre>
+        <p>Open the site, register an account, verify your email, then make yourself an admin:</p>
+<pre><code>php artisan larafire:make-admin you@example.com</code></pre>
+        <p>Log out and back in, or wait up to 60 seconds for the user cache to expire, and the <strong>Admin</strong> link appears.</p>
+      </section>
+
+      <!-- ============ AUTHENTICATION ============ -->
+      <section data-section>
+        <h2 id="authentication">Authentication<a class="anchor" href="#authentication">#</a></h2>
+        <p>Firebase stores the users, and Laravel keeps the session. After Firebase confirms who someone is, Lara Fire logs them into a normal Laravel session, so all of these work as usual:</p>
+<pre><code>auth()->user()          <span class="c">// App\Auth\FirebaseUser</span>
+auth()->id()            <span class="c">// Firebase UID</span>
+@auth ... @endauth
+Route::middleware('auth')</code></pre>
+        <h3>Routes</h3>
+        <table>
+          <tr><th>URL</th><th>What</th><th>Middleware</th></tr>
+          <tr><td><code>/login</code>, <code>/register</code></td><td>Email/password + social buttons</td><td><code>guest</code>, <code>throttle:auth</code></td></tr>
+          <tr><td><code>/forgot-password</code></td><td>Firebase sends the reset email</td><td><code>guest</code></td></tr>
+          <tr><td><code>/email/verify</code></td><td>"Check your inbox" + resend</td><td><code>auth</code></td></tr>
+          <tr><td><code>/home</code></td><td>Dashboard</td><td><code>auth</code>, <code>firebase.verified</code></td></tr>
+          <tr><td><code>/profile</code></td><td>Name, email, password, disable account</td><td><code>auth</code>, <code>firebase.verified</code></td></tr>
+        </table>
+        <h3>Middleware</h3>
+        <table>
+          <tr><th>Alias</th><th>Class</th><th>Behaviour</th></tr>
+          <tr><td><code>firebase.verified</code></td><td><code>EnsureEmailIsVerified</code></td><td>Sends unverified <em>password</em> users to <code>/email/verify</code>. Google and GitHub users are trusted.</td></tr>
+          <tr><td><code>admin</code></td><td><code>EnsureUserIsAdmin</code></td><td>Requires the custom claim <code>admin === true</code>.</td></tr>
+          <tr><td><code>firebase.token</code></td><td><code>AuthenticateWithIdToken</code></td><td>Stateless API auth with a Bearer ID token.</td></tr>
+        </table>
+        <h3>The <code>FirebaseUser</code> object</h3>
+<pre><code>$user = $request->user();
+
+$user->uid;            $user->email;          $user->displayName;
+$user->photoUrl;       $user->emailVerified;  $user->customClaims;
+$user->providers;      <span class="c">// ['password', 'google.com', ...]</span>
+
+$user->isAdmin();              <span class="c">// admin claim === true</span>
+$user->hasPasswordProvider();  <span class="c">// signed up with email/password</span>
+$user->name();                 <span class="c">// display name → email prefix → "User"</span>
+$user->initials();             <span class="c">// "JD"</span></code></pre>
+        <div class="callout"><span class="callout-title">Caching</span><p>The user record is cached for <code>LARAFIRE_USER_CACHE_TTL</code> seconds, so pages don't call Firebase on every request. Every write made through the app (profile, admin actions) clears the cache right away.</p></div>
+      </section>
+
+      <!-- ============ SOCIAL LOGIN ============ -->
+      <section data-section>
+        <h2 id="social-login">Google &amp; GitHub login<a class="anchor" href="#social-login">#</a></h2>
+        <div class="flow">Browser ──popup──▶ Google / GitHub
+Browser ◀──────── Firebase ID token
+Browser ──POST /auth/firebase (id_token)──▶ Laravel
+Laravel: verifyIdToken() → rejects anonymous accounts → auth_time must be under 5 min
+Laravel: Auth::login(user) → normal session</div>
+        <h3>Google</h3>
+        <p>Authentication → Sign-in method → <strong>Google</strong> → Enable → pick a support email. That's all.</p>
+        <h3>GitHub</h3>
+        <ol>
+          <li>GitHub → Settings → Developer settings → <strong>OAuth Apps</strong> → New OAuth App.</li>
+          <li>Set the <em>Authorization callback URL</em> to the one Firebase shows you (<code>https://&lt;project&gt;.firebaseapp.com/__/auth/handler</code>).</li>
+          <li>Paste the Client ID and Client Secret into Firebase → Sign-in method → <strong>GitHub</strong>.</li>
+        </ol>
+        <div class="callout warn"><span class="callout-title">Same email, different provider</span><p>By default Firebase allows one account per email address. If someone signs up with email and later tries GitHub with the same address, they'll see "An account already exists with this email…". You can switch to linking accounts in Authentication → Settings → <em>User account linking</em>.</p></div>
+      </section>
+
+      <!-- ============ ADMIN ============ -->
+      <section data-section>
+        <h2 id="admin">Admin panel &amp; roles<a class="anchor" href="#admin">#</a></h2>
+        <p>Roles are stored as Firebase <strong>custom claims</strong>, a small JSON object on each user (for example <code>{"admin": true}</code>). Claims are included in every ID token, so your API, mobile apps and Firestore rules can all read them.</p>
+        <h3>Granting the first admin</h3>
+<pre><code>php artisan larafire:make-admin you@example.com
+php artisan larafire:make-admin someone@example.com --revoke</code></pre>
+        <p>After that, admins can promote other users from <code>/admin</code>.</p>
+        <h3>What the panel can do</h3>
+        <ul>
+          <li>Stats: total, verified, new in the last 30 days, admins and disabled users, plus a breakdown by sign-in provider.</li>
+          <li>Search by name, email or UID.</li>
+          <li>Create users, edit name/email, send a password reset link.</li>
+          <li>Grant or revoke admin. Other claims are kept, because changes are merged in rather than replaced.</li>
+          <li>Disable or enable accounts. Disabling also <strong>revokes refresh tokens</strong>, which signs the user out of mobile apps.</li>
+          <li>Send push notifications (see <a href="#push">Push</a>).</li>
+        </ul>
+        <div class="callout"><span class="callout-title">Guard rails</span><p>An admin can't demote or disable their own account (the request is rejected with 422), so you can't lock yourself out.</p></div>
+        <h3>Using claims elsewhere</h3>
+<pre><code><span class="c">// Firestore security rules</span>
+allow write: if request.auth.token.admin == true;
+
+<span class="c">// JavaScript client</span>
+const { claims } = await user.getIdTokenResult(true);
+if (claims.admin) { <span class="c">/* show admin UI */</span> }</code></pre>
+      </section>
+
+      <!-- ============ FIRESTORE ============ -->
+      <section data-section>
+        <h2 id="firestore">Cloud Firestore<a class="anchor" href="#firestore">#</a></h2>
+        <p>The Notes module (<code>/notes</code>) is a complete per-user example of creating, listing, editing and deleting documents. It talks to Firestore over the <strong>REST API</strong> using your service account, so you don't need the <code>grpc</code> PHP extension or <code>google/cloud-firestore</code>.</p>
+        <h3>Setup</h3>
+        <ol>
+          <li>Go to Firebase console → <strong>Firestore Database</strong> → Create database. <em>Production mode</em> is fine, because the server uses the admin key.</li>
+          <li>Pick a region close to your users. You can't change it later.</li>
+          <li>Open <code>/notes</code>. If something's wrong, the page shows the exact error with setup steps.</li>
+        </ol>
+        <h3>Data model</h3>
+<pre><code>notes/{autoId}
+  uid:        "firebase-uid"          <span class="c">// owner</span>
+  title:      "Shopping list"
+  body:       "Milk, eggs…"
+  created_at: "2026-09-27T10:00:00+05:30"
+  updated_at: "2026-09-27T10:00:00+05:30"</code></pre>
+        <h3>Using the repository</h3>
+<pre><code>use App\Services\NoteRepository;
+
+public function index(Request $request, NoteRepository $notes)
+{
+    $mine = $notes->forUser($request->user()->uid);          <span class="c">// list</span>
+    $one  = $notes->find($request->user()->uid, $id);        <span class="c">// null if not yours</span>
+    $new  = $notes->create($uid, ['title' => 'Hi', 'body' => '…']);
+    $notes->update($uid, $id, ['title' => 'Edited']);
+    $notes->delete($uid, $id);
+}</code></pre>
+        <p>Every method checks that the note belongs to the given <code>uid</code>. Someone else's note behaves as if it doesn't exist, returning a 404.</p>
+        <h3>Security rules (only if clients also read Firestore)</h3>
+<pre><code>rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /notes/{id} {
+      allow read, update, delete: if request.auth != null && request.auth.uid == resource.data.uid;
+      allow create: if request.auth != null && request.auth.uid == request.resource.data.uid;
+    }
+  }
+}</code></pre>
+      </section>
+
+      <!-- ============ PUSH ============ -->
+      <section data-section>
+        <h2 id="push">Push notifications (FCM)<a class="anchor" href="#push">#</a></h2>
+        <p>Instead of storing device tokens in a table, each browser subscribes to two <strong>FCM topics</strong>, and FCM keeps track of the devices:</p>
+        <div class="flow">Enable on this device ──▶ token ──▶ POST /push/subscriptions
+                                   ├─ larafire-all            (everyone)
+                                   └─ larafire-user-&lt;uid&gt;     (just this user)
+Admin → Push ──▶ send to topic ──▶ FCM delivers to every subscribed browser</div>
+        <h3>Setup</h3>
+        <ol>
+          <li>Go to Project settings → Cloud Messaging → <strong>Web Push certificates</strong> → Generate key pair.</li>
+          <li>Put the key in <code>.env</code> as <code>FIREBASE_WEB_VAPID_KEY=...</code>.</li>
+          <li><code>npm run build</code>, then reload. On the dashboard, click <strong>Enable on this device</strong> and allow notifications.</li>
+          <li>Go to Admin → Push notifications and send to Everyone or to one user (by UID).</li>
+        </ol>
+        <p>The service worker is generated by Laravel at <code>/firebase-messaging-sw.js</code>, with your config taken from <code>.env</code>, so you don't copy config into a static file.</p>
+        <h3>Sending from your own code</h3>
+<pre><code>use App\Services\PushNotifications;
+
+app(PushNotifications::class)->toEveryone('New video!', 'Lara Fire v2 walkthrough', 'https://youtu.be/...');
+app(PushNotifications::class)->toUser($uid, 'Order shipped', 'It arrives tomorrow.');</code></pre>
+        <div class="callout warn"><span class="callout-title">Rules browsers enforce</span><p>Push only works on <code>https://</code> or <code>localhost</code>, in a normal (non-incognito) window. Notification links must be <code>https</code>. On iOS the site has to be added to the Home Screen (iOS 16.4+).</p></div>
+      </section>
+
+      <!-- ============ API ============ -->
+      <section data-section>
+        <h2 id="api">REST API<a class="anchor" href="#api">#</a></h2>
+        <p>This is a stateless JSON API for mobile or SPA clients that already use Firebase Auth. Send the user's <strong>ID token</strong> with every request:</p>
+<pre><code>Authorization: Bearer &lt;ID token&gt;</code></pre>
+        <h3>Endpoints</h3>
+        <table>
+          <tr><th>Method</th><th>Endpoint</th><th>Body</th><th>Returns</th></tr>
+          <tr><td>GET</td><td><code>/api/v1/me</code></td><td>—</td><td>The signed-in user</td></tr>
+          <tr><td>GET</td><td><code>/api/v1/notes</code></td><td>—</td><td>List of your notes</td></tr>
+          <tr><td>POST</td><td><code>/api/v1/notes</code></td><td><code>{title, body?}</code></td><td>201 + note</td></tr>
+          <tr><td>GET</td><td><code>/api/v1/notes/{id}</code></td><td>—</td><td>Note or 404</td></tr>
+          <tr><td>PUT/PATCH</td><td><code>/api/v1/notes/{id}</code></td><td><code>{title, body?}</code></td><td>Updated note</td></tr>
+          <tr><td>DELETE</td><td><code>/api/v1/notes/{id}</code></td><td>—</td><td>204</td></tr>
+        </table>
+        <h3>Getting a token</h3>
+<pre><code><span class="c">// Web / JS</span>
+const token = await firebase.auth().currentUser.getIdToken();
+
+<span class="c">// Flutter</span>
+final token = await FirebaseAuth.instance.currentUser!.getIdToken();
+
+<span class="c"># Testing with curl: sign in via Firebase REST</span>
+curl -X POST "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=WEB_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"email":"you@example.com","password":"secret","returnSecureToken":true}'</code></pre>
+        <h3>Example</h3>
+<pre><code>curl http://localhost:8000/api/v1/me -H "Authorization: Bearer $TOKEN"
+
+{
+  "data": {
+    "uid": "k3Jd8…", "email": "you@example.com", "displayName": "Suhas",
+    "emailVerified": true, "isAdmin": true, "providers": ["password"]
+  }
+}</code></pre>
+        <h3>Errors &amp; limits</h3>
+        <table>
+          <tr><th>Status</th><th>Meaning</th></tr>
+          <tr><td>401</td><td>Missing, invalid, expired or <strong>revoked</strong> token, or the user is disabled</td></tr>
+          <tr><td>403</td><td>Password account with an unverified email</td></tr>
+          <tr><td>404</td><td>Not found, or not your note</td></tr>
+          <tr><td>422</td><td>Validation failed (<code>errors</code> object in the body)</td></tr>
+          <tr><td>429</td><td>Rate limit: 60 requests/minute per user</td></tr>
+        </table>
+        <p>ID tokens expire after one hour. The Firebase SDKs refresh them for you, so call <code>getIdToken()</code> before each request.</p>
+      </section>
+
+      <!-- ============ COMMANDS ============ -->
+      <section data-section>
+        <h2 id="commands">Artisan commands<a class="anchor" href="#commands">#</a></h2>
+        <table>
+          <tr><th>Command</th><th>What it does</th></tr>
+          <tr><td><code>larafire:about</code></td><td>Setup checklist: service account, web config, VAPID key, Firestore.</td></tr>
+          <tr><td><code>larafire:make-admin {email}</code></td><td>Grants the <code>admin</code> claim. Add <code>--revoke</code> to remove it.</td></tr>
+        </table>
+      </section>
+
+      <!-- ============ ARCHITECTURE ============ -->
+      <section data-section>
+        <h2 id="architecture">How it works<a class="anchor" href="#architecture">#</a></h2>
+        <table>
+          <tr><th>File</th><th>Role</th></tr>
+          <tr><td><code>app/Auth/FirebaseUser.php</code></td><td>Laravel user object (<code>Authenticatable</code>) built from a Firebase user record</td></tr>
+          <tr><td><code>app/Auth/FirebaseUserProvider.php</code></td><td>Laravel user provider: checks credentials against Firebase and loads users by UID, with a cache</td></tr>
+          <tr><td><code>app/Http/Middleware/*</code></td><td>Email verification, admin check, ID-token API auth</td></tr>
+          <tr><td><code>app/Services/NoteRepository.php</code></td><td>Firestore REST client for notes</td></tr>
+          <tr><td><code>app/Services/PushNotifications.php</code></td><td>FCM topics: subscribe, broadcast, send to one user</td></tr>
+          <tr><td><code>bootstrap/app.php</code></td><td>Middleware aliases and redirects (Laravel 13 slim structure)</td></tr>
+          <tr><td><code>config/larafire.php</code></td><td>Every Lara Fire setting</td></tr>
+          <tr><td><code>resources/js/{social-login,push}.js</code></td><td>Firebase JS SDK, loaded only on pages that need it</td></tr>
+        </table>
+      </section>
+
+      <!-- ============ CUSTOMIZING ============ -->
+      <section data-section>
+        <h2 id="customizing">Customizing<a class="anchor" href="#customizing">#</a></h2>
+        <h3>Add a page for signed-in users</h3>
+<pre><code><span class="c">// routes/web.php (inside the auth + firebase.verified group)</span>
+Route::get('/billing', BillingController::class)->name('billing');
+
+<span class="c">// admins only</span>
+Route::middleware('admin')->get('/admin/reports', ReportsController::class);</code></pre>
+        <h3>Add your own role</h3>
+<pre><code><span class="c">// grant</span>
+$claims = $auth->getUser($uid)->customClaims;
+$claims['editor'] = true;
+$auth->setCustomUserClaims($uid, $claims);
+app(\App\Auth\FirebaseUserProvider::class)->forget($uid);
+
+<span class="c">// check</span>
+($request->user()->customClaims['editor'] ?? false) === true</code></pre>
+        <h3>A new Firestore collection</h3>
+        <p>Copy <code>NoteRepository</code>, change the collection name and the fields in <code>create()</code> / <code>map()</code>, and keep the <code>uid</code> ownership checks.</p>
+        <h3>Branding</h3>
+        <p>Set <code>APP_NAME</code> in <code>.env</code>, and change the colors in <code>resources/scss/app.scss</code> (<code>$fire</code>). The layout lives in <code>resources/views/layouts/app.blade.php</code>.</p>
+      </section>
+
+      <!-- ============ TESTING ============ -->
+      <section data-section>
+        <h2 id="testing">Testing<a class="anchor" href="#testing">#</a></h2>
+<pre><code>php artisan test      <span class="c"># or: composer test</span>
+vendor/bin/pint       <span class="c"># code style</span></code></pre>
+        <p>No real Firebase calls are made. <code>tests/TestCase.php</code> gives you some helpers:</p>
+<pre><code>$auth = $this->mockFirebaseAuth();                    <span class="c">// Mockery double for Firebase Auth</span>
+$auth->allows('getUser')->andReturn($this->userRecord(['claims' => ['admin' => true]]));
+
+$this->actingAs($this->firebaseUser())->get('/home')->assertOk();
+
+$token = $this->idToken(['sub' => 'uid-123']);         <span class="c">// fake verified ID token</span>
+Http::fake([...]);                                     <span class="c">// Firestore REST calls</span></code></pre>
+      </section>
+
+      <!-- ============ DEPLOYMENT ============ -->
+      <section data-section>
+        <h2 id="deployment">Deployment<a class="anchor" href="#deployment">#</a></h2>
+        <h3>Checklist</h3>
+        <ul>
+          <li><code>APP_ENV=production</code>, <code>APP_DEBUG=false</code>, and <code>APP_URL</code> set to your https URL.</li>
+          <li>Upload the service account file outside the web root, or set <code>FIREBASE_CREDENTIALS</code> to an absolute path.</li>
+          <li>Add your domain to Firebase → Authentication → <strong>Authorized domains</strong>.</li>
+          <li>Serve over <strong>HTTPS</strong>, because push notifications need it.</li>
+          <li>Make <code>storage/</code> and <code>bootstrap/cache/</code> writable by the web server.</li>
+        </ul>
+<pre><code>composer install --no-dev --optimize-autoloader
+npm ci &amp;&amp; npm run build
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache</code></pre>
+        <p>Your web server should point to <code>public/</code>. With nginx, the usual Laravel <code>try_files $uri $uri/ /index.php?$query_string;</code> also serves <code>/firebase-messaging-sw.js</code>.</p>
+        <div class="callout"><span class="callout-title">More than one server?</span><p>Set <code>SESSION_DRIVER=redis</code> and <code>CACHE_STORE=redis</code> so sessions and the user cache are shared.</p></div>
+      </section>
+
+      <!-- ============ SECURITY ============ -->
+      <section data-section>
+        <h2 id="security">Security<a class="anchor" href="#security">#</a></h2>
+        <ul>
+          <li>Admin rights can only be granted from the server (Artisan) or by an existing admin.</li>
+          <li>Profile actions only ever act on <code>$request->user()</code>. Nothing takes a UID from the URL.</li>
+          <li>Social login and API tokens are verified on the server, and stale, anonymous or revoked tokens are rejected.</li>
+          <li>Rate limits: 10/min on auth endpoints, 60/min on the API.</li>
+          <li>CSRF protection on every web form. Blade escapes output by default.</li>
+        </ul>
+        <div class="callout bad"><span class="callout-title">Still on v1?</span><p>Versions below 2.0.0 contain <code>/home/iamadmin</code>, which lets <strong>any</strong> logged-in user make themselves admin. <a href="#upgrading">Upgrade now</a>.</p></div>
+        <p>Found a vulnerability? Please report it privately through <a href="https://github.com/suhasrkms/Lara-Fire/security/advisories/new" target="_blank" rel="noopener">GitHub Security Advisories</a>.</p>
+      </section>
+
+      <!-- ============ TROUBLESHOOTING ============ -->
+      <section data-section>
+        <h2 id="troubleshooting">Troubleshooting<a class="anchor" href="#troubleshooting">#</a></h2>
+
+        <h3>The openssl extension is required… (Composer)</h3>
+        <p>Enable <code>extension=openssl</code> in <code>php.ini</code>. Run <code>php --ini</code> to find the file. If no php.ini is loaded, copy <code>php.ini-development</code> to <code>php.ini</code> first.</p>
+
+        <h3>cURL error 60: unable to get local issuer certificate</h3>
+        <p>PHP (common with XAMPP on Windows) has no CA certificate bundle, so every Firebase call fails and login says "Could not reach Firebase".</p>
+<pre><code><span class="c"># PowerShell</span>
+$phpDir = Split-Path (Get-Command php).Source
+Invoke-WebRequest https://curl.se/ca/cacert.pem -OutFile "$phpDir\cacert.pem"
+<span class="c"># then in php.ini:</span>
+curl.cainfo   = "C:\xampp\php\cacert.pem"
+openssl.cafile = "C:\xampp\php\cacert.pem"</code></pre>
+        <p>Restart <code>php artisan serve</code> afterwards.</p>
+
+        <h3>Unable to determine the Firebase Project ID</h3>
+        <p><code>FIREBASE_CREDENTIALS</code> points to the wrong file. Check with <code>php artisan larafire:about</code>, then run <code>php artisan config:clear</code>.</p>
+
+        <h3>The app dies on a page and laravel.log is empty</h3>
+        <p>A native PHP extension crashed the process before Laravel could log anything. On Windows it's usually <code>grpc</code>. Lara Fire doesn't need it, so remove <code>extension=grpc</code> from php.ini. You can see crashes by running <code>php -d display_errors=1 artisan serve</code>.</p>
+
+        <h3>Social sign-in failed</h3>
+        <ul>
+          <li>Is the provider enabled in Firebase, and is your domain listed under Authorized domains?</li>
+          <li>Are all the <code>FIREBASE_WEB_*</code> keys set? Run <code>npm run build</code> again after changing them.</li>
+          <li>The real reason is in <code>storage/logs/laravel.log</code>.</li>
+        </ul>
+
+        <h3>Push: stuck at "Requesting permission…"</h3>
+        <p>Chrome hides the prompt after it has been dismissed a few times. Click the <strong>🔕 bell</strong> or the "Notifications blocked" chip in the address bar and choose Allow. Or go to Lock icon → Site settings → Notifications → Allow. Also check Windows Settings → Notifications → Chrome.</p>
+
+        <h3>Push: "Registration failed – push service error"</h3>
+        <ul>
+          <li><strong>Brave:</strong> turn on <code>brave://settings/privacy</code> → "Use Google services for push messaging".</li>
+          <li>Incognito windows don't support push.</li>
+          <li>VPNs and ad-blocking DNS can block Google's push servers.</li>
+          <li>DevTools → Application → <em>Clear site data</em>, then try again.</li>
+        </ul>
+
+        <h3>Notes: "Firestore database not found"</h3>
+        <p>Create the database in Firebase console → Firestore Database. If you use a named database, set <code>LARAFIRE_FIRESTORE_DATABASE</code>.</p>
+
+        <h3>I made myself admin but don't see the Admin link</h3>
+        <p>The user record is cached for 60 seconds. Log out and back in, or wait a minute.</p>
+
+        <h3>Verification emails go to spam</h3>
+        <p>Customize the sender and template under Authentication → Templates, and add a custom domain there if you have one.</p>
+
+        <h3>419 Page Expired</h3>
+        <p>The session expired or <code>APP_URL</code> doesn't match the address you're browsing. Refresh the page, or clear cookies for the site.</p>
+      </section>
+
+      <!-- ============ UPGRADING ============ -->
+      <section data-section>
+        <h2 id="upgrading">Upgrading from v1<a class="anchor" href="#upgrading">#</a></h2>
+        <p>v2 is a rewrite on Laravel 13. Your <strong>Firebase users and claims carry over unchanged</strong>, because everything is stored in Firebase.</p>
+        <ol>
+          <li>Upgrade to PHP 8.3 or newer.</li>
+          <li>Pull or merge v2, then run <code>composer update</code>, <code>npm install</code> and <code>npm run build</code>.</li>
+          <li>Move your key to <code>storage/app/firebase/service-account.json</code> and update <code>FIREBASE_CREDENTIALS</code>.</li>
+          <li>Add the <code>FIREBASE_WEB_*</code> keys (see <code>.env.example</code>).</li>
+          <li>Run <code>php artisan larafire:make-admin you@example.com</code>, because <code>/home/iamadmin</code> has been removed.</li>
+        </ol>
+        <table>
+          <tr><th>v1</th><th>v2</th></tr>
+          <tr><td><code>/home/profile</code></td><td><code>/profile</code></td></tr>
+          <tr><td><code>/home/admin</code></td><td><code>/admin</code></td></tr>
+          <tr><td><code>/password/reset</code></td><td><code>/forgot-password</code></td></tr>
+          <tr><td><code>/home/iamadmin</code></td><td><code>php artisan larafire:make-admin</code></td></tr>
+          <tr><td><code>resources/credentials/firebase_credentials.json</code></td><td><code>storage/app/firebase/service-account.json</code></td></tr>
+          <tr><td>laravel/ui, sanctum, spatie/laravel-html, google/cloud-firestore</td><td>Removed</td></tr>
+        </table>
+      </section>
+
+      <!-- ============ FAQ ============ -->
+      <section data-section>
+        <h2 id="faq">FAQ<a class="anchor" href="#faq">#</a></h2>
+        <h4>Can I still use MySQL?</h4>
+        <p>Yes. Set the <code>DB_*</code> keys and use Eloquent for your own tables as usual. Users stay in Firebase, so store the Firebase <code>uid</code> as the foreign key.</p>
+        <h4>Is it free?</h4>
+        <p>Lara Fire is MIT licensed. Firebase's free Spark plan covers Auth, FCM and a generous Firestore quota.</p>
+        <h4>Why not Laravel Sanctum for the API?</h4>
+        <p>Your clients already have a Firebase ID token, so accepting it directly means users sign in only once and you don't need a token table.</p>
+        <h4>Does it support Realtime Database / Storage?</h4>
+        <p>The Firebase SDK is already installed, so <code>app(\Kreait\Firebase\Contract\Database::class)</code> and <code>Storage::class</code> are available. Only the Notes example uses Firestore.</p>
+        <h4>Windows / XAMPP?</h4>
+        <p>Yes, v2 was built and tested on Windows. See <a href="#troubleshooting">Troubleshooting</a> for the two common PHP config fixes.</p>
+      </section>
+
+      <!-- ============ SUPPORT ============ -->
+      <section data-section>
+        <h2 id="support">Support<a class="anchor" href="#support">#</a></h2>
+        <div class="grid">
+          <a class="card" href="https://www.youtube.com/@sevenstac" target="_blank" rel="noopener"><div class="ico">▶️</div><h4>Video tutorials</h4><p>Step-by-step series on the Seven Stac channel.</p></a>
+          <a class="card" href="https://github.com/suhasrkms/Lara-Fire/issues" target="_blank" rel="noopener"><div class="ico">🐛</div><h4>Issues</h4><p>Bug reports and feature requests.</p></a>
+          <a class="card" href="https://github.com/suhasrkms/Lara-Fire/blob/master/CHANGELOG.md" target="_blank" rel="noopener"><div class="ico">📝</div><h4>Changelog</h4><p>What changed in every release.</p></a>
+        </div>
+        <footer>
+          Lara Fire is MIT licensed · Built by <a href="index.html">Suhas R</a> ·
+          <a href="https://github.com/suhasrkms" target="_blank" rel="noopener">GitHub</a> ·
+          <a href="https://www.youtube.com/@sevenstac" target="_blank" rel="noopener">YouTube</a>
+        </footer>
+      </section>
+
+      <p id="no-results" class="hide">No sections match your search.</p>
+    </main>
+  </div>
+
+  <script>
+    // copy buttons
+    document.querySelectorAll('pre').forEach(function (pre) {
+      var b = document.createElement('button');
+      b.className = 'copy'; b.type = 'button'; b.textContent = 'Copy';
+      b.addEventListener('click', function () {
+        var text = pre.querySelector('code').innerText;
+        navigator.clipboard.writeText(text).then(function () {
+          b.textContent = 'Copied'; b.classList.add('done');
+          setTimeout(function () { b.textContent = 'Copy'; b.classList.remove('done'); }, 1500);
+        });
+      });
+      pre.appendChild(b);
+    });
+
+    // active link on scroll
+    var links = Array.prototype.slice.call(document.querySelectorAll('#toc a'));
+    var heads = links.map(function (a) { return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+    function onScroll() {
+      var current = heads[0];
+      heads.forEach(function (h) { if (h.getBoundingClientRect().top < 120) current = h; });
+      links.forEach(function (a) { a.classList.toggle('active', current && a.getAttribute('href') === '#' + current.id); });
+    }
+    document.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+    // close mobile nav on click
+    links.forEach(function (a) { a.addEventListener('click', function () { document.body.classList.remove('nav-open'); }); });
+
+    // search: filter sections + sidebar links
+    var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+    document.getElementById('search').addEventListener('input', function (e) {
+      var q = e.target.value.trim().toLowerCase(), any = false;
+      sections.forEach(function (s) {
+        var hit = !q || s.innerText.toLowerCase().indexOf(q) !== -1;
+        s.classList.toggle('hide', !hit); any = any || hit;
+        var h = s.querySelector('h2');
+        if (h) { var l = document.querySelector('#toc a[href="#' + h.id + '"]'); if (l) l.classList.toggle('hide', !hit); }
+      });
+      document.getElementById('no-results').classList.toggle('hide', any);
+    });
+  </script>
+</body>
+</html>
