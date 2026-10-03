@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 
 <head>
   <!-- Google Tag Manager -->
@@ -21,10 +21,110 @@
   <!-- End Google Tag Manager -->
   <!-- Required meta tags -->
   <meta charset="utf-8" />
-  <title>Suhas R — Personal Portfolio</title>
-  <meta name="title" content="Suhas R — Personal Portfolio" />
-  <meta name="description"
-    content="Discover my portfolio and explore a collection of stunning projects. From design to development and everything in between." />
+    <!-- SEO -->
+    <title>Portfolio — Projects by Suhas R</title>
+    <meta name="description" content="Projects by Suhas R: Namma Metro Live Map, the Lara Fire Laravel + Firebase starter kit, and other open-source and web development work." />
+    <meta name="author" content="Suhas R" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://suhasrkms.github.io/portfolio.html" />
+    <meta property="og:site_name" content="Suhas R" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://suhasrkms.github.io/portfolio.html" />
+    <meta property="og:title" content="Portfolio — Projects by Suhas R" />
+    <meta property="og:description" content="Projects by Suhas R: Namma Metro Live Map, the Lara Fire Laravel + Firebase starter kit, and other open-source and web development work." />
+    <meta property="og:image" content="https://suhasrkms.github.io/img/og/default.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Portfolio — Projects by Suhas R" />
+    <meta name="twitter:description" content="Projects by Suhas R: Namma Metro Live Map, the Lara Fire Laravel + Firebase starter kit, and other open-source and web development work." />
+    <meta name="twitter:image" content="https://suhasrkms.github.io/img/og/default.jpg" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "CollectionPage",
+          "url": "https://suhasrkms.github.io/portfolio.html",
+          "name": "Portfolio — Projects by Suhas R",
+          "author": {
+            "@id": "https://suhasrkms.github.io/#person"
+          },
+          "hasPart": [
+            {
+              "@type": "WebApplication",
+              "name": "Namma Metro Live Map",
+              "url": "https://suhasrkms.github.io/namma_metro.html"
+            },
+            {
+              "@type": "SoftwareSourceCode",
+              "name": "Lara Fire",
+              "url": "https://suhasrkms.github.io/lara_fire.html"
+            }
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://suhasrkms.github.io/#person",
+          "name": "Suhas R",
+          "url": "https://suhasrkms.github.io/",
+          "image": "https://suhasrkms.github.io/img/face-1.jpg",
+          "jobTitle": "Software Engineer",
+          "email": "mailto:suhasrkms@gmail.com",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Bengaluru",
+            "addressRegion": "Karnataka",
+            "addressCountry": "IN"
+          },
+          "alumniOf": [
+            {
+              "@type": "CollegeOrUniversity",
+              "name": "K S Institute of Technology"
+            },
+            {
+              "@type": "EducationalOrganization",
+              "name": "Dayananda Sagar Institutions"
+            }
+          ],
+          "knowsAbout": [
+            "Laravel",
+            "Firebase",
+            "PHP",
+            "TypeScript",
+            "JavaScript",
+            "Web development",
+            "MapLibre GL"
+          ],
+          "sameAs": [
+            "https://github.com/suhasrkms",
+            "https://www.linkedin.com/in/suhas-r-394626222",
+            "https://codepen.io/suhasrkms",
+            "https://www.instagram.com/suhas_rkms"
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://suhasrkms.github.io/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Portfolio",
+              "item": "https://suhasrkms.github.io/portfolio.html"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+    <!-- /SEO -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <!-- color of address bar in mobile browser -->
   <meta name="theme-color" content="#2B2B35" />
@@ -43,7 +143,6 @@
   <!-- main css -->
   <link rel="stylesheet" href="css/style.css" />
 
-  <title>Suhas R</title>
 </head>
 
 <body>
@@ -221,12 +320,40 @@
 
                   <div class="art-grid art-grid-2-col art-gallery">
                     <!-- grid item -->
+                    <div class="art-grid-item webDev">
+                      <!-- grid item frame -->
+                      <a data-fancybox="gallery" href="img/works/namma-metro/1.jpg"
+                        class="art-a art-portfolio-item-frame art-horizontal">
+                        <!-- img -->
+                        <img src="img/works/namma-metro/thumb.jpg" alt="Namma Metro Live Map" />
+                        <!-- zoom icon -->
+                        <span class="art-item-hover"><i class="fas fa-expand"></i></span>
+                      </a>
+                      <!-- grid item frame end -->
+                      <!-- description -->
+                      <div class="art-item-description">
+                        <!-- title -->
+                        <h5 class="mb-15">Namma Metro Live Map</h5>
+                        <div class="mb-15">
+                          Schedule-accurate live map of Bengaluru's Namma Metro: every train animated from BMRCL's real timetable, departure boards for all stations and a follow-a-train mode. Vite + TypeScript + MapLibre GL.
+                        </div>
+                        <!-- button -->
+                        <a href="/namma_metro.html" class="art-link art-color-link art-w-chevron">Read more</a>
+                        <a href="https://blr-namma-metro.web.app" target="_blank" data-no-swup class="art-link art-color-link art-w-chevron" style="margin-left:15px">Live demo</a>
+                        <!-- TODO: add GitHub link + "opensource" class when repo is made public -->
+                        <!-- <a href="https://github.com/suhasrkms/namma-metro" target="_blank" data-no-swup class="art-link art-color-link art-w-chevron" style="margin-left:15px">GitHub</a> -->
+                      </div>
+                      <!-- description end -->
+                    </div>
+                    <!-- grid item end -->
+
+                    <!-- grid item -->
                     <div class="art-grid-item opensource laravel">
                       <!-- grid item frame -->
                       <a data-fancybox="gallery" href="img/works/original-size/1.jpg"
                         class="art-a art-portfolio-item-frame art-horizontal">
                         <!-- img -->
-                        <img src="img/works/thumbnail/1.jpg" alt="item" />
+                        <img src="img/works/thumbnail/1.jpg" alt="Lara Fire screenshot" />
                         <!-- zoom icon -->
                         <span class="art-item-hover"><i class="fas fa-expand"></i></span>
                       </a>
@@ -252,7 +379,7 @@
                       <a data-fancybox="gallery" href="img/works/original-size/9.png"
                         class="art-a art-portfolio-item-frame art-vertical">
                         <!-- img -->
-                        <img src="img/works/original-size/9.png" alt="item" />
+                        <img src="img/works/original-size/9.png" alt="DevCons Developers screenshot" />
                         <!-- zoom icon -->
                         <span class="art-item-hover"><i class="fas fa-expand"></i></span>
                       </a>
@@ -278,7 +405,7 @@
                       <a data-fancybox="gallery" href="img/works/original-size/3.jpg"
                         class="art-a art-portfolio-item-frame art-horizontal">
                         <!-- img -->
-                        <img src="img/works/thumbnail/3.jpg" alt="item" />
+                        <img src="img/works/thumbnail/3.jpg" alt="Smart Farming screenshot" />
                         <!-- zoom icon -->
                         <span class="art-item-hover"><i class="fas fa-expand"></i></span>
                       </a>
@@ -307,7 +434,7 @@
                       <a data-fancybox="gallery" href="img/works/original-size/4.jpg"
                         class="art-a art-portfolio-item-frame art-square">
                         <!-- img -->
-                        <img src="img/works/thumbnail/4.jpg" alt="item" />
+                        <img src="img/works/thumbnail/4.jpg" alt="Push Notification screenshot" />
                         <!-- zoom icon -->
                         <span class="art-item-hover"><i class="fas fa-expand"></i></span>
                       </a>
@@ -338,7 +465,7 @@
                       <a data-fancybox="gallery" href="img/works/original-size/5.jpg"
                         class="art-a art-portfolio-item-frame art-square">
                         <!-- img -->
-                        <img src="img/works/thumbnail/5.jpg" alt="item" />
+                        <img src="img/works/thumbnail/5.jpg" alt="Laravel Firebase Authentication screenshot" />
                         <!-- zoom icon -->
                         <span class="art-item-hover"><i class="fas fa-expand"></i></span>
                       </a>
@@ -369,7 +496,7 @@
                       <a data-fancybox="gallery" href="img/works/original-size/6.jpg"
                         class="art-a art-portfolio-item-frame art-vertical">
                         <!-- img -->
-                        <img src="img/works/thumbnail/6.jpg" alt="item" />
+                        <img src="img/works/thumbnail/6.jpg" alt="Wonder Kids screenshot" />
                         <!-- zoom icon -->
                         <span class="art-item-hover"><i class="fas fa-expand"></i></span>
                       </a>
@@ -395,7 +522,7 @@
                       <a data-fancybox="gallery" href="img/works/original-size/7.jpg"
                         class="art-a art-portfolio-item-frame art-horizontal">
                         <!-- img -->
-                        <img src="img/works/thumbnail/7.jpg" alt="item" />
+                        <img src="img/works/thumbnail/7.jpg" alt="Lasya Dance Studio screenshot" />
                         <!-- zoom icon -->
                         <span class="art-item-hover"><i class="fas fa-expand"></i></span>
                       </a>
@@ -424,7 +551,7 @@
                       <a data-fancybox="gallery" href="img/works/original-size/2.jpg"
                         class="art-a art-portfolio-item-frame art-vertical">
                         <!-- img -->
-                        <img src="img/works/thumbnail/2.jpg" alt="item" />
+                        <img src="img/works/thumbnail/2.jpg" alt="Awesome Burger screenshot" />
                         <!-- zoom icon -->
                         <span class="art-item-hover"><i class="fas fa-expand"></i></span>
                       </a>
@@ -451,7 +578,7 @@
                       <a data-fancybox="gallery" href="img/works/original-size/8.jpg"
                         class="art-a art-portfolio-item-frame art-horizontal">
                         <!-- img -->
-                        <img src="img/works/thumbnail/8.jpg" alt="item" />
+                        <img src="img/works/thumbnail/8.jpg" alt="Minimastic Admin Panel screenshot" />
                         <!-- zoom icon -->
                         <span class="art-item-hover"><i class="fas fa-expand"></i></span>
                       </a>

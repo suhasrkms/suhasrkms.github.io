@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+          "gtm.start": new Date().getTime(),
+          event: "gtm.js",
+        });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-NGHRCTQ");
+    </script>
+    <!-- End Google Tag Manager -->
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <!-- SEO -->
+    <title>Namma Metro Live Map — Schedule-Accurate Bengaluru Metro | Suhas R</title>
+    <meta name="description" content="A live map of every Bengaluru Namma Metro train, animated from BMRCL&#x27;s real timetable, with departure boards for all 83 stations and a follow-a-train mode." />
+    <meta name="author" content="Suhas R" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://suhasrkms.github.io/namma_metro.html" />
+    <meta property="og:site_name" content="Suhas R" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://suhasrkms.github.io/namma_metro.html" />
+    <meta property="og:title" content="Namma Metro Live Map — Schedule-Accurate Bengaluru Metro | Suhas R" />
+    <meta property="og:description" content="A live map of every Bengaluru Namma Metro train, animated from BMRCL&#x27;s real timetable, with departure boards for all 83 stations and a follow-a-train mode." />
+    <meta property="og:image" content="https://suhasrkms.github.io/img/og/namma-metro.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Namma Metro Live Map — Schedule-Accurate Bengaluru Metro | Suhas R" />
+    <meta name="twitter:description" content="A live map of every Bengaluru Namma Metro train, animated from BMRCL&#x27;s real timetable, with departure boards for all 83 stations and a follow-a-train mode." />
+    <meta name="twitter:image" content="https://suhasrkms.github.io/img/og/namma-metro.jpg" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Namma Metro Live Map",
+          "url": "https://blr-namma-metro.web.app",
+          "applicationCategory": "TravelApplication",
+          "operatingSystem": "Any (web browser)",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR"
+          },
+          "author": {
+            "@id": "https://suhasrkms.github.io/#person"
+          },
+          "image": "https://suhasrkms.github.io/img/og/namma-metro.jpg",
+          "description": "Schedule-accurate live map of Bengaluru's Namma Metro, animated from BMRCL's published timetable."
+        },
+        {
+          "@type": "Person",
+          "@id": "https://suhasrkms.github.io/#person",
+          "name": "Suhas R",
+          "url": "https://suhasrkms.github.io/",
+          "image": "https://suhasrkms.github.io/img/face-1.jpg",
+          "jobTitle": "Software Engineer",
+          "email": "mailto:suhasrkms@gmail.com",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Bengaluru",
+            "addressRegion": "Karnataka",
+            "addressCountry": "IN"
+          },
+          "alumniOf": [
+            {
+              "@type": "CollegeOrUniversity",
+              "name": "K S Institute of Technology"
+            },
+            {
+              "@type": "EducationalOrganization",
+              "name": "Dayananda Sagar Institutions"
+            }
+          ],
+          "knowsAbout": [
+            "Laravel",
+            "Firebase",
+            "PHP",
+            "TypeScript",
+            "JavaScript",
+            "Web development",
+            "MapLibre GL"
+          ],
+          "sameAs": [
+            "https://github.com/suhasrkms",
+            "https://www.linkedin.com/in/suhas-r-394626222",
+            "https://codepen.io/suhasrkms",
+            "https://www.instagram.com/suhas_rkms"
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://suhasrkms.github.io/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Portfolio",
+              "item": "https://suhasrkms.github.io/portfolio.html"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Namma Metro Live Map",
+              "item": "https://suhasrkms.github.io/namma_metro.html"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+    <!-- /SEO -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- color of address bar in mobile browser -->
+    <meta name="theme-color" content="#2B2B35" />
+
+    <!-- favicon  -->
+    <link rel="shortcut icon" href="img/thumbnail.ico" type="image/x-icon" />
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="css/plugins/bootstrap.min.css" />
+    <!-- font awesome css -->
+    <link rel="stylesheet" href="css/plugins/font-awesome.min.css" />
+    <!-- swiper css -->
+    <link rel="stylesheet" href="css/plugins/swiper.min.css" />
+    <!-- fancybox css -->
+    <link rel="stylesheet" href="css/plugins/fancybox.min.css" />
+    <!-- main css -->
+    <link rel="stylesheet" href="css/style.css" />
+
+  </head>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-NGHRCTQ"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- app -->
+    <div class="art-app">
+      <!-- mobile top bar -->
+      <div class="art-mobile-top-bar"></div>
+
+      <!-- app wrapper -->
+      <div class="art-app-wrapper">
+        <!-- app container end -->
+        <div class="art-app-container">
+          <!-- info bar -->
+          <div class="art-info-bar">
+            <!-- menu bar frame -->
+            <div class="art-info-bar-frame">
+              <!-- info bar header -->
+              <div class="art-info-bar-header">
+                <!-- info bar button -->
+                <a class="art-info-bar-btn" href="#.">
+                  <!-- icon -->
+                  <i class="fas fa-ellipsis-v"></i>
+                </a>
+                <!-- info bar button end -->
+              </div>
+              <!-- info bar header end -->
+
+              <!-- info bar header -->
+              <div class="art-header">
+                <!-- avatar -->
+                <div class="art-avatar">
+                  <a href="index.html" class="art-avatar-curtain">
+                    <img src="img/face-1.jpg" alt="avatar" />
+                  </a>
+                  <!-- available -->
+                  <div class="art-lamp-light">
+                    <!-- add class 'art-not-available' if not available-->
+                    <div class="art-available-lamp"></div>
+                  </div>
+                </div>
+                <!-- avatar end -->
+                <!-- name -->
+                <h5 class="art-name mb-10">
+                  <a href="/index.html">Suhas R</a>
+                </h5>
+                <!-- post -->
+                <div class="art-sm-text">Software Engineer <br /></div>
+              </div>
+              <!-- info bar header end -->
+
+              <!-- scroll frame -->
+              <div id="scrollbar2" class="art-scroll-frame">
+                <!-- info bar about -->
+                <div class="art-table p-15-15">
+                  <!-- about text -->
+                  <ul>
+                    <!-- country -->
+                    <li>
+                      <h6>Residence:</h6>
+                      <span>India</span>
+                    </li>
+                    <!-- city -->
+                    <li>
+                      <h6>City:</h6>
+                      <span>Banglore</span>
+                    </li>
+                    <!-- age -->
+                    <!-- <li>
+                    <h6>Age:</h6><span>20</span>
+                  </li> -->
+                  </ul>
+                </div>
+                <!-- info bar about end -->
+
+                <!-- divider -->
+                <div class="art-ls-divider"></div>
+
+                <!-- language skills -->
+
+                <!-- hard skills -->
+
+                <!-- divider -->
+                <div class="art-ls-divider"></div>
+
+                <!-- knowledge list -->
+                <ul class="art-knowledge-list p-15-0">
+                  <!-- list item -->
+                  <li>Bootstrap, Materialize</li>
+                  <!-- list item -->
+                  <li>Styles, Css</li>
+                  <!-- list item -->
+                  <li>Larvel, Blade, Dart</li>
+                  <!-- list item -->
+                  <li>GIT knowledge</li>
+                </ul>
+                <!-- knowledge list end -->
+
+                <!-- divider -->
+                <div class="art-ls-divider"></div>
+
+                <!-- links frame -->
+                <div class="art-links-frame p-15-15">
+                  <!-- download cv button -->
+                  <a href="files/suhasr_cv.pdf" class="art-link" download
+                    >Download cv <i class="fas fa-download"></i
+                  ></a>
+                </div>
+                <!-- links frame end -->
+              </div>
+              <!-- scroll frame end -->
+
+              <!-- sidebar social -->
+              <div class="art-ls-social">
+                <!-- social link -->
+                <a href="https://www.linkedin.com/in/suhas-r-394626222"
+                  ><i class="fab fa-linkedin"></i
+                ></a>
+                <!-- social link -->
+                <a href="https://github.com/suhasrkms"
+                  ><i class="fab fa-github"></i
+                ></a>
+                <!-- social link -->
+                <a href="mailto:suhasrkms@gmail.com"
+                  ><i class="fas fa-envelope"></i
+                ></a>
+                <!-- social link -->
+                <a href="https://codepen.io/suhasrkms"
+                  ><i class="fab fa-codepen"></i
+                ></a>
+                <!-- social link -->
+                <a href="https://www.instagram.com/suhas_rkms"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+              </div>
+              <!-- sidebar social end -->
+            </div>
+            <!-- menu bar frame end -->
+          </div>
+          <!-- info bar end -->
+
+          <!-- content -->
+          <div class="art-content">
+            <!-- curtain -->
+            <div class="art-curtain"></div>
+
+            <!-- top background -->
+            <div class="art-top-bg" style="background-image: url(img/bg.jpg)">
+              <!-- overlay -->
+              <div class="art-top-bg-overlay"></div>
+              <!-- overlay end -->
+            </div>
+            <!-- top background end -->
+
+            <!-- swup container -->
+            <div class="transition-fade" id="swup">
+              <!-- scroll frame -->
+              <div id="scrollbar" class="art-scroll-frame">
+                <!-- container -->
+                <div class="container-fluid">
+                  <!-- row -->
+                  <div class="row p-30-0">
+                    <!-- col -->
+                    <div class="col-lg-12">
+                      <!-- section title -->
+                      <div class="art-section-title">
+                        <div class="art-title-frame">
+                          <h4>Namma Metro Live Map</h4>
+                        </div>
+                        <div class="art-right-frame">
+                          <a href="https://blr-namma-metro.web.app" target="_blank" rel="noopener noreferrer" data-no-swup>
+                            <div class="art-project-category project-link-page">
+                              Open Live Map
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                      <!-- section title end -->
+                    </div>
+                    <!-- col end -->
+
+                    <!-- col -->
+                    <div class="col-lg-12">
+                      <div
+                        class="swiper-container art-works-slider"
+                        style="overflow: visible"
+                      >
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <a
+                              data-fancybox="gallery"
+                              href="img/works/namma-metro/1.jpg"
+                              class="art-a art-portfolio-item-frame art-horizontal"
+                            >
+                              <img src="img/works/namma-metro/1.jpg" alt="Namma Metro Live Map overview" />
+                              <span class="art-item-hover"
+                                ><i class="fas fa-expand"></i
+                              ></span>
+                            </a>
+                          </div>
+                          <div class="swiper-slide">
+                            <a
+                              data-fancybox="gallery"
+                              href="img/works/namma-metro/2.jpg"
+                              class="art-a art-portfolio-item-frame art-horizontal"
+                            >
+                              <img src="img/works/namma-metro/2.jpg" alt="All three operating lines with trains in motion" />
+                              <span class="art-item-hover"
+                                ><i class="fas fa-expand"></i
+                              ></span>
+                            </a>
+                          </div>
+                          <div class="swiper-slide">
+                            <a
+                              data-fancybox="gallery"
+                              href="img/works/namma-metro/3.jpg"
+                              class="art-a art-portfolio-item-frame art-horizontal"
+                            >
+                              <img src="img/works/namma-metro/3.jpg" alt="Live departure board at Majestic interchange" />
+                              <span class="art-item-hover"
+                                ><i class="fas fa-expand"></i
+                              ></span>
+                            </a>
+                          </div>
+                          <div class="swiper-slide">
+                            <a
+                              data-fancybox="gallery"
+                              href="img/works/namma-metro/4.jpg"
+                              class="art-a art-portfolio-item-frame art-horizontal"
+                            >
+                              <img src="img/works/namma-metro/4.jpg" alt="Crowd heat layer showing station footfall" />
+                              <span class="art-item-hover"
+                                ><i class="fas fa-expand"></i
+                              ></span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- col end -->
+
+                    <!-- col -->
+                    <div class="col-lg-12">
+                      <div class="art-slider-navigation">
+                        <div class="art-sn-left">
+                          <div class="swiper-pagination"></div>
+                        </div>
+                        <div class="art-sn-right">
+                          <div class="art-slider-nav-frame">
+                            <div class="art-slider-nav art-works-swiper-prev">
+                              <i class="fas fa-chevron-left"></i>
+                            </div>
+                            <div class="art-slider-nav art-works-swiper-next">
+                              <i class="fas fa-chevron-right"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- col end -->
+                  </div>
+                  <!-- row end -->
+                </div>
+                <!-- container end -->
+
+                <!-- container -->
+                <div class="container-fluid">
+                  <div class="row p-30-0">
+                    <div class="col-lg-12">
+                      <div class="art-section-title">
+                        <div class="art-title-frame">
+                          <h4>Project details</h4>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- col -->
+                    <div class="col-lg-8">
+                      <div class="art-a art-card art-fluid-card">
+                        <h5 class="mb-15">Description</h5>
+                        <div class="mb-15">
+                          <p>
+                            <strong>Namma Metro has no public live-train API, so I animated BMRCL's real published timetable instead.</strong>
+                            The result is an ambient, schedule-accurate map of Bengaluru's metro that's meant to be watched, not just used.
+                          </p>
+                          <p>
+                            Trains move according to the actual frequency bands and turn-back trips for the correct day type (weekday, Monday, Saturday/holiday or Sunday), all in Bengaluru (IST) time. Nothing is a random loop.
+                          </p>
+                          <ul>
+                            <li><strong>Every train, live:</strong> Purple, Green and Yellow line trains animated along real track geometry. Planned lines (Blue, Pink) are shown as dashed, clearly marked routes.</li>
+                            <li><strong>Departure boards:</strong> next trains for all 83 stations, in an LED-style board, with estimated footfall and popular destinations.</li>
+                            <li><strong>Follow a train:</strong> tap any train and the camera rides along with it at street level.</li>
+                            <li><strong>Crowd heat:</strong> how busy each station usually is right now, built from BMRCL ridership data.</li>
+                            <li><strong>Cinematic idle mode:</strong> after a few seconds without input, the camera drifts between the network overview and each line by itself.</li>
+                            <li><strong>Stateless simulation:</strong> each train's position is a pure function of the current time, so a backgrounded tab resumes instantly with no drift.</li>
+                            <li><strong>SEO-ready:</strong> every station is prerendered as its own page with structured data and a sitemap.</li>
+                          </ul>
+                          <p><strong>Tech stack:</strong> Vite + TypeScript, MapLibre GL JS on OpenFreeMap vector tiles, Vitest, and Firebase Hosting deployed through GitHub Actions.</p>
+                          <p>
+                            Line geometry, stations and timetables come from
+                            <a href="https://github.com/Vonter/bmrcl-gtfs" target="_blank" rel="noopener noreferrer" class="art-color-link">Vonter/bmrcl-gtfs</a>
+                            (ODbL-1.0), which is built from BMRCL timetables and OpenStreetMap.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- col end -->
+
+                    <!-- col -->
+                    <div class="col-lg-4">
+                      <div class="art-a art-card">
+                        <h5 class="mb-15">Resource Links</h5>
+                        <div class="art-buttons-frame">
+                          <a href="https://blr-namma-metro.web.app" target="_blank" rel="noopener noreferrer" data-no-swup class="art-link art-color-link">
+                            > Live Map</a>
+                        </div>
+                        <div class="art-buttons-frame pt-2">
+                          <a href="https://blr-namma-metro.web.app/network" target="_blank" rel="noopener noreferrer" data-no-swup class="art-link art-color-link">
+                            > Network &amp; Ridership</a>
+                        </div>
+                        <!-- TODO: uncomment when the repo is open-sourced -->
+                        <!--
+                        <div class="art-buttons-frame pt-2">
+                          <a href="https://github.com/suhasrkms/namma-metro" target="_blank" rel="noopener noreferrer" class="art-link art-color-link">
+                            > Repository Link</a>
+                        </div>
+                        -->
+                      </div>
+                    </div>
+                    <!-- col end -->
+                  </div>
+                  <!-- row end -->
+                </div>
+                <!-- container end -->
+
+                <!-- container -->
+                <div class="container-fluid">
+                  <!-- footer -->
+                  <footer>
+                    <!-- copyright -->
+                    <div>Made with <span style="color:#e25555">&#10084;&#65039;</span> by <a href="https://github.com/suhasrkms" target="_blank" rel="noopener" class="art-color-link">suhasrkms</a></div>
+                  </footer>
+                  <!-- footer end -->
+                </div>
+                <!-- container end -->
+              </div>
+              <!-- scroll frame end -->
+            </div>
+            <!-- swup container end -->
+          </div>
+          <!-- content end -->
+
+          <!-- menu bar -->
+          <div class="art-menu-bar">
+            <!-- menu bar frame -->
+            <div class="art-menu-bar-frame">
+              <!-- menu bar header -->
+              <div class="art-menu-bar-header">
+                <!-- menu bar button -->
+                <a class="art-menu-bar-btn" href="#.">
+                  <!-- icon -->
+                  <span></span>
+                </a>
+                <!-- menu bar button end -->
+              </div>
+              <!-- menu bar header end -->
+
+              <!-- current page title -->
+              <div class="art-current-page"></div>
+              <!-- current page title end -->
+
+              <!-- scroll frame -->
+              <div class="art-scroll-frame">
+                <!-- menu -->
+                <nav id="swupMenu">
+                  <!-- menu list -->
+                  <ul class="main-menu">
+                    <li class="menu-item current-menu-item">
+                      <a href="/index.html">Home</a>
+                    </li>
+                    <li class="menu-item">
+                      <a href="/history.html">History</a>
+                    </li>
+                    <li class="menu-item">
+                      <a href="/portfolio.html">Portfolio</a>
+                    </li>
+                    <li class="menu-item">
+                      <a href="/contact.html">Contact</a>
+                    </li>
+                  </ul>
+                  <!-- menu list end -->
+                </nav>
+                <!-- menu end -->
+              </div>
+              <!-- scroll frame end -->
+            </div>
+            <!-- menu bar frame -->
+          </div>
+          <!-- menu bar end -->
+        </div>
+        <!-- app container end -->
+      </div>
+      <!-- app wrapper end -->
+
+      <!-- preloader -->
+      <div class="art-preloader">
+        <!-- preloader content -->
+        <div class="art-preloader-content">
+          <!-- title -->
+          <h4>Suhas R</h4>
+          <!-- progressbar -->
+          <div id="preloader" class="art-preloader-load"></div>
+        </div>
+        <!-- preloader content end -->
+      </div>
+      <!-- preloader end -->
+    </div>
+    <!-- app end -->
+
+    <!-- jquery js -->
+    <script src="js/plugins/jquery.min.js"></script>
+    <!-- anime js -->
+    <script src="js/plugins/anime.min.js"></script>
+    <!-- swiper js -->
+    <script src="js/plugins/swiper.min.js"></script>
+    <!-- progressbar js -->
+    <script src="js/plugins/progressbar.min.js"></script>
+    <!-- smooth scrollbar js -->
+    <script src="js/plugins/smooth-scrollbar.min.js"></script>
+    <!-- overscroll js -->
+    <script src="js/plugins/overscroll.min.js"></script>
+    <!-- typing js -->
+    <script src="js/plugins/typing.min.js"></script>
+    <!-- isotope js -->
+    <script src="js/plugins/isotope.min.js"></script>
+    <!-- fancybox js -->
+    <script src="js/plugins/fancybox.min.js"></script>
+    <!-- swup js -->
+    <script src="js/plugins/swup.min.js"></script>
+
+    <!-- main js -->
+    <script src="js/main.js"></script>
+  </body>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBGg3vlRWmKjjPUm0CCb0OOuTTs48n3q5Y",
+      authDomain: "portfolio-cb54f.firebaseapp.com",
+      databaseURL: "https://portfolio-cb54f-default-rtdb.firebaseio.com",
+      projectId: "portfolio-cb54f",
+      storageBucket: "portfolio-cb54f.appspot.com",
+      messagingSenderId: "961026691431",
+      appId: "1:961026691431:web:59008ef498a55468addfc2",
+      measurementId: "G-P1T46KVWSJ",
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+</html>
